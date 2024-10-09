@@ -1,6 +1,4 @@
-loopOn = True
-
-while(loopOn):
+while True:
     f = open("dane.txt", "r+")
     val = f.readline()
     
@@ -10,9 +8,6 @@ while(loopOn):
         f.close()
 
         wynik = numer*numer + 3*numer
-        print(wynik)
         q = open("wyniki.txt", "w")
         q.write(str(wynik))
         q.close()
-    else:
-        pass
