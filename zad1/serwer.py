@@ -1,11 +1,12 @@
 loopOn = True
 
 while(loopOn):
-    f = open("dane.txt", "r")
+    f = open("dane.txt", "r+")
     val = f.readline()
     
     if val.isdigit():
         numer = int(val)
+        f.truncate(0)
         f.close()
 
         wynik = numer*numer + 3*numer
@@ -15,4 +16,3 @@ while(loopOn):
         q.close()
     else:
         pass
-    
