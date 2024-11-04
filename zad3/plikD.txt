@@ -1,1 +1,3 @@
-ciężkie ogromne, z żelaza i stali.
+ciężkie ogromne
+\input{plikE.txt}
+, z żelaza i stali.

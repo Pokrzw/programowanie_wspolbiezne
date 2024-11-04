@@ -10,9 +10,9 @@ nazwa_pliku =  parser.parse_args().poczatek
 slowo =  parser.parse_args().slowo
 
 # print("Slowo: "+ slowo +", nazwa:"+ nazwa_pliku)
-
 def policzSlowo(nazwa_pliku, slowo):
     wystapienia = 0
+    forks = 0
     with open(nazwa_pliku, "r+") as plik:
         lines = plik.readlines()
         for line in lines:
@@ -24,11 +24,14 @@ def policzSlowo(nazwa_pliku, slowo):
                 arg2 = slowo
                 pid = os.fork()
                 if pid>0:
-                    status = os.wait()
-                    if os.WIFEXITED(status[1]):
-                        wystapienia += os.WEXITSTATUS(status[1])
+                    forks += 1
                 else:
                     sys.exit(policzSlowo(arg1, arg2))
+    for i in range(forks):
+        child_pid, status = os.wait()
+        if os.WIFEXITED(status):
+            wystapienia += os.WEXITSTATUS(status)
+
     return wystapienia
 
 
