@@ -9,9 +9,10 @@ while(loopOn):
         f.truncate(0)
         f.close()
 
-        wynik = numer*numer + 3*numer
+        wynik = numer*numer
         print(wynik)
         q = open("wyniki.txt", "w")
+        q.truncate(0)
         q.write(str(wynik))
         q.close()
     else:
